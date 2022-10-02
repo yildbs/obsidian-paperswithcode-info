@@ -21,6 +21,8 @@ const getPaperInfo = async (url : string) => {
 
 		const parser = new DOMParser();
 		const html = parser.parseFromString(response.text, "text/html");
+        const yyyy_mm_dd = moment(new Date()).format().split("T")[0];
+        const yyyymmdd = yyyy_mm_dd.replace("_", "");
 
 		new Notice("start!!!! ");
 
@@ -40,6 +42,9 @@ const getPaperInfo = async (url : string) => {
         let authors = []
         if (lenAuthors > 0){
             datePublished = cleanText(authorsElement[0].textContent);
+            if(datePublished != null){
+                title = `${yyyymmdd} ${title} (${datePublished})`;
+            }
             for(let index=1;index<lenAuthors;index++){
                 let author = cleanText(authorsElement[index].textContent);
                 if(author != null && author.length >= 3){
@@ -97,8 +102,8 @@ ${tasksFrontmatter}
 authors: 
 ${authorsFrontmatter}
 publish_date: ${datePublished}
-start_study_date: ${moment(new Date()).format().split("T")[0]}
-finish_study_date: ${moment(new Date()).format().split("T")[0]}
+start_study_date: ${yyyy_mm_dd} 
+finish_study_date: ${yyyy_mm_dd}
 ---
 
 # ${title}

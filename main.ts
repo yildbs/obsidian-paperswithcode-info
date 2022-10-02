@@ -39,7 +39,7 @@ export default class PaperswithcodeInfo extends Plugin {
 				if(title){
 					// sanitizing the title
 					const regExp =
-					/[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
+					/[\{\}\/?.,;:|*~`!^\-+<>@\#$%&\\\=\'\"]/gi;
 					const fileName = title.replace(regExp, "");
 
 					// change file name

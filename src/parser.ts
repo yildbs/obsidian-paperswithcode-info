@@ -43,6 +43,7 @@ const getPaperInfo = async (url : string) => {
             for(let index=1;index<lenAuthors;index++){
                 let author = cleanText(authorsElement[index].textContent);
                 if(author != null && author.length >= 3){
+                    author = author.replace(" ", "");
                     authors.push(author);
                 }
             }
@@ -54,7 +55,7 @@ const getPaperInfo = async (url : string) => {
         const lenTasks = tasksElement.length;
         let tasks = []
         for(let index=0;index<lenTasks;index++){
-            tasks.push(cleanText(tasksElement[index].textContent))
+            tasks.push(cleanText(tasksElement[index].textContent)?.replace(" ", ""))
         }
 
         let githubsElement = 

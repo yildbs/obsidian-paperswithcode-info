@@ -88,7 +88,7 @@ const getPaperInfo = async (url : string) => {
 		const result = 
 `---
 title : ${title}
-tags: 
+tag: 
   - paperswithcode
 ${tagsFrontmatter}
 tasks: 
